@@ -1,4 +1,6 @@
 from src.data.data_loader import DataLoader
+from src.data.data_inspector import DataInspector
+
 
 
 def main():
@@ -10,6 +12,14 @@ def main():
     # Load Data
     loader = DataLoader(data_path)
     df = loader.load_data()
+
+    inspector = DataInspector(df)
+    inspector.basic_info()
+    inspector.column_types()
+    inspector.missing_values()
+    inspector.target_distribution("Churn")
+    inspector.statistical_summary()
+
 
     # Show first few rows
     print("\n[INFO] Dataset Preview:")
